@@ -22,6 +22,11 @@ import javafx.scene.effect.DropShadow;
 // Threading (For running nmap commands asynchronously)
 import javafx.concurrent.Task;
 
+// REMINDER USE THIS TO COMPILE
+// javac --module-path lib --add-modules javafx.controls,javafx.fxml portmapper.java
+// REMINDER USE THIS TO RUN
+// java --module-path lib --add-modules javafx.controls,javafx.fxml portmapper
+
 public class portmapper {
     public static void main(String[] args) {
         System.out.print("Hello");
