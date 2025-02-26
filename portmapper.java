@@ -23,5 +23,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.concurrent.Task;
 
 public class portmapper {
-    
+    public static void main(String[] args) {
+        System.out.print("Hello");
+    }
 }
