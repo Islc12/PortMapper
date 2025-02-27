@@ -1,3 +1,7 @@
+Author: Richard Smith
+Date dev started: 2/26/2025
+contact: (richrsmith@proton.me)
+
 This will end up becoming the README file for the port mapper program, as I work on this project more and more I'll add more to this about the functionality of the program.
 
 In the meantime it will serve as an outline to show what needs to be worked on in order to make this project function as well as highlighting the goal for the program.
