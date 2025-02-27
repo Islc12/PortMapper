@@ -24,4 +24,26 @@ Also I feel as though the JavaFX library contains a very throughough amount of u
 
 ----------------------------------------------------------------------------------------------------------
 ### OUTLINE
-1.
+1. Install and configure JavaFX
+2. Import JavaFX utilities
+    a. Need a table/grid
+    b. Need buttons
+    c. Need to be able to change button colors when pressed
+3. Import ArrayList for holding port numbers
+4. Import java library to run external commands within the program
+5. Set the stage (full screen, lets to 1920 x 1080)
+6. Build the scene (simple black background)
+7. Create the table
+    a. 128 buttons per row
+    b. 32  columns
+8. Fill the table with buttons
+9. Assign buttons to integer values of port numbers depending on position
+    a. left to right, top to bottom
+10. Build color change feature into buttons to differentiate on/off
+11. Insert a "clear" button to reset the board
+12. Insert a "start" button to begin scanning
+13. Build an Nmap script to scan for ports within the ArrayList
+14. Link the Nmap script to the main java program
+15. **reserved**
+
+----------------------------------------------------------------------------------------------------------
