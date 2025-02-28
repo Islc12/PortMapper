@@ -1,6 +1,8 @@
 Author: Richard Smith
-Date dev started: 2/26/2025
-contact: (richrsmith@proton.me)
+
+Date started: 2/26/2025
+
+Contact: (richrsmith@proton.me)
 
 This will end up becoming the README file for the port mapper program, as I work on this project more and more I'll add more to this about the functionality of the program.
 
@@ -51,3 +53,8 @@ Also I feel as though the JavaFX library contains a very throughough amount of u
 15. **reserved**
 
 ----------------------------------------------------------------------------------------------------------
+
+### REFERENCES:
+
+https://openjfx.io/javadoc/23/javafx.graphics/javafx/scene/layout/GridPane.html
+
