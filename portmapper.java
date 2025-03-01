@@ -27,6 +27,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.effect.DropShadow;
 // Threading (For running nmap commands asynchronously)
 import javafx.concurrent.Task;
+import java.lang.ProcessBuilder;
+import java.nio.Buffer;
+// Used for printing information to the terminal for debugging purposes
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 // REMINDER USE THIS TO COMPILE
 // javac --module-path lib --add-modules javafx.controls,javafx.fxml portmapper.java
@@ -37,6 +42,7 @@ public class portmapper extends Application {
     private VBox mainLayout;
     private GridPane grid;
     private Stage mainStage;
+    private TextField ipInputField;
     private ArrayList<Button> buttons = new ArrayList<Button>(); // Added as a reminder to assign buttons to the arraylist
     
     public static void main(String[] args) {
@@ -48,6 +54,7 @@ public class portmapper extends Application {
         mainLayout.setStyle("-fx-background-color: #272727");
         gridTable();
         controlButtons();
+        ipInputField();
 
         Scene scene = new Scene(mainLayout); 
         scene.setFill(Color.web("272727")); // Using Color.web() allows you to pass a hex value for a color as an arg rather than Color.<COLOR> otherwise
@@ -94,6 +101,19 @@ public class portmapper extends Application {
                                 + "-fx-background-color: #8080FF; -fx-boarder-color: #FFFFFF");
                     }
                 });
+
+
+                button.setOnDragDetected(e -> {
+                    button.startFullDrag();
+                });
+
+                button.setOnMouseDragEntered(e -> {
+                    if (button.getStyle().contains("#8080FF")) {
+                        button.setStyle("-fx-background-radius: 50%; "
+                                        + "-fx-min-width: 1px; -fx-min-height: 1px; -fx-padding: 0; "
+                                        + "-fx-background-color: #FF0000; -fx-boarder-color: #FFFFFF");;
+                    }
+                });
                 int portNumber = (row * 128) + col + 1;
                 buttons.add(button);
                 grid.add(button, col, row);
@@ -114,6 +134,18 @@ public class portmapper extends Application {
         startButton.setPrefSize(100, 25);
         startButton.setStyle("-fx-background-color:rgb(24, 179, 36); -fx-border-color:rgb(0, 0, 0); -fx-text-fill:rgb(0, 0, 0); "
                              + "-fx-border-radius: 10px; -fx-background-radius: 10px");
+        startButton.setOnAction(__ -> {
+            nmapScan(); // Start the scan when the button is clicked
+        });
+
+        resetButton.setOnAction(__ -> {
+            // Reset the button colors to their default state
+            for (Button button : buttons) {
+                button.setStyle("-fx-background-radius: 50%; "
+                                + "-fx-min-width: 1px; -fx-min-height: 1px; -fx-padding: 0; "
+                                + "-fx-background-color: #8080FF; -fx-boarder-color: #FFFFFF");
+            }
+        });
 
         buttonContainer.setAlignment(Pos.BOTTOM_RIGHT);
         buttonContainer.setPadding(new Insets(20,20,20,20));
@@ -121,5 +153,50 @@ public class portmapper extends Application {
         buttonContainer.getChildren().addAll(resetButton, startButton);
 
         mainLayout.getChildren().addAll(buttonContainer);
-    } 
+    }
+
+    private void ipInputField() {
+        // Create a text field for the target IP address
+        TextField ipInputField = new TextField();
+        ipInputField.setPromptText("Enter IP address");
+        ipInputField.setPrefWidth(200);
+        ipInputField.setStyle("-fx-background-color: #FFFFFF; -fx-text-fill: #000000;"
+                                + "-fx-border-color: #000000; -fx-border-radius: 5px; -fx-padding: 5px;");
+        mainLayout.getChildren().add(ipInputField);
+    }
+
+    private void nmapScan() {
+        Task<Void> nmapScanTask = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                for (int i = 0; i < buttons.size(); i++) {
+                    Button button = buttons.get(i);
+                    if (button.getStyle().contains("#FF0000")) {
+                        int portNumber = i + 1;
+                        ProcessBuilder pb = new ProcessBuilder("nmap", "-p", String.valueOf(portNumber), "-T5", ipInputField.getText());
+                        // Will need to go back and add an input field for the IP address
+                    Process process = pb.start();
+                    System.out.println(process);
+
+                    // Prints the output of the process to the terminal window; used for debugging
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        System.out.println(line);
+                    }
+
+                    BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+                    while ((line = errorReader.readLine()) != null) {
+                        System.out.println("Error: " + line);
+                    }
+
+                    process.waitFor();
+                    }
+                }
+                return null;
+            }
+        };
+        Thread scanThread = new Thread(nmapScanTask);
+        scanThread.start();
+    }
 }
