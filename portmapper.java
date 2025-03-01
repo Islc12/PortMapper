@@ -37,7 +37,7 @@ public class portmapper extends Application {
     private VBox mainLayout;
     private GridPane grid;
     private Stage mainStage;
-    // private ArrayList<Button> buttons = new ArrayList<Button>(); // Added as a reminder to assign buttons to the arraylist
+    private ArrayList<Button> buttons = new ArrayList<Button>(); // Added as a reminder to assign buttons to the arraylist
     
     public static void main(String[] args) {
         Application.launch(args);
@@ -82,6 +82,20 @@ public class portmapper extends Application {
                 button.setStyle("-fx-background-radius: 50%; "
                                 + "-fx-min-width: 1px; -fx-min-height: 1px; -fx-padding: 0; "
                                 + "-fx-background-color: #8080FF; -fx-boarder-color: #FFFFFF");
+                button.setOnAction(__ -> {
+                    if (button.getStyle().contains("#8080FF")) {
+                        button.setStyle("-fx-background-radius: 50%; "
+                                + "-fx-min-width: 1px; -fx-min-height: 1px; -fx-padding: 0; "
+                                + "-fx-background-color: #FF0000; -fx-boarder-color: #FFFFFF");
+                    }
+                    else {
+                        button.setStyle("-fx-background-radius: 50%; "
+                                + "-fx-min-width: 1px; -fx-min-height: 1px; -fx-padding: 0; "
+                                + "-fx-background-color: #8080FF; -fx-boarder-color: #FFFFFF");
+                    }
+                });
+                int portNumber = (row * 128) + col + 1;
+                buttons.add(button);
                 grid.add(button, col, row);
             }
         }
