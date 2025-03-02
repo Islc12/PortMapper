@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "portmapper",
+            "request": "launch",
+            "mainClass": "portmapper",
+            "projectName": "PortMapper_8f129157"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "Main",

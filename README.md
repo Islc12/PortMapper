@@ -4,10 +4,6 @@ Date started: 2/26/2025
 
 Contact: (richrsmith@proton.me)
 
-This will end up becoming the README file for the port mapper program, as I work on this project more and more I'll add more to this about the functionality of the program.
-
-In the meantime it will serve as an outline to show what needs to be worked on in order to make this project function as well as highlighting the goal for the program.
-
 ----------------------------------------------------------------------------------------------------------
 ### PURPOSE
 During the 2025 Virginia Cyber Range CTF event we were presented with an "IRL" (in real life) challenge that could earn your team points for two separate parts.
@@ -28,6 +24,25 @@ thinking what the best course of action to take for this would be. Ultimately I 
 never played with the GUI components that they offer. Likewise it's been a while since I've developed anything with java and to be fair my java portfolio is lacking.
 Also I feel as though the JavaFX library contains a very throughough amount of utilities that will allow me to customize this program in ways that python or bash couldn't.
 
+Normally after completing a project I would remove things that normal users may find to be less than useful within a program, such as debugging lines or commented lines of
+code. Being as I wrote this for my fellow students I've decided to leave those things in, as well as the rough outline at the end of this `README.md` file so others can have
+some kind of idea on my process, see how I correct mistakes, as well as see certain areas that I got hung up at. Programming is fun, but at the junior level it can for sure
+be frustrating. Seeing that others struggle too can ease that pain for others though, it helps them know that we're all humans and we both make mistakes and get better
+over time.
+
+As with all the other programs and scripts I post on GitHub the source code is posted for everyone to see, while I won't maintain this program (unless I find future use
+for it) I have no problems with others taking the source and forking their own version. That's one of the great things about FOSS, you have the freedom to do so!
+
+----------------------------------------------------------------------------------------------------------
+### INSTRUCTIONS
+
+The Port Mapper v1.0 is very easy to use, simply click on the ports that you wish to scan, selected ports will change color and maintain that color so long as they remain
+selected. The user has the ability to deselect ports by clicking them individually or by utilizng the `Reset` button which will clear the entire board. After the user has
+finished selecting the ports they wish to use they must enter a valid IP address (eg. 192.168.0.1) and then click the `Confirm IP` button. Finally when the user is 100%
+certain that it's time to scan simply press the `Start Scan` button and Nmap will do the rest. Debugging information can be found within the terminal which will output both
+the Nmap information as well as an errors collected.
+
+
 ----------------------------------------------------------------------------------------------------------
 ### OUTLINE
 1. Install and configure JavaFX
@@ -37,7 +52,7 @@ Also I feel as though the JavaFX library contains a very throughough amount of u
     c. Need to be able to change button colors when pressed
 3. Import ArrayList for holding port numbers
 4. Import java library to run external commands within the program
-5. Set the stage (full screen, lets to 1920 x 1080)
+5. Set the stage
 6. Build the scene (simple black background)
 7. Create the table
     a. 128 buttons per row
@@ -50,7 +65,7 @@ Also I feel as though the JavaFX library contains a very throughough amount of u
 12. Insert a "start" button to begin scanning
 13. Build an Nmap script to scan for ports within the ArrayList
 14. Link the Nmap script to the main java program
-15. **reserved**
+15. Clean up README.md for release
 
 ----------------------------------------------------------------------------------------------------------
 
@@ -58,3 +73,10 @@ Also I feel as though the JavaFX library contains a very throughough amount of u
 
 https://openjfx.io/javadoc/23/javafx.graphics/javafx/scene/layout/GridPane.html
 
+https://www.baeldung.com/javafx
+
+https://www.oracle.com/java/technologies/javase/javafx-docs.html
+
+https://www.youtube.com/playlist?list=PLZPZq0r_RZOM-8vJA3NQFZB7JroDcMwev
+
+https://docs.oracle.com/javase/8/javafx/get-started-tutorial/get_start_apps.htm
