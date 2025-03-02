@@ -43,10 +43,6 @@ public class portmapper extends Application {
     private Label titleBox;
     private ArrayList<Button> buttons = new ArrayList<Button>(); // Added as a reminder to assign buttons to the arraylist
     
-    public static void main(String[] args) {
-        Application.launch(args);
-    }
-
     public void start(Stage mainStage) throws Exception {
         mainLayout = new VBox(10);
         mainLayout.setStyle("-fx-background-color: #272727");
@@ -253,5 +249,10 @@ timeline.play();
         };
         Thread scanThread = new Thread(nmapScanTask);
         scanThread.start();
+    }
+
+    // Main method to launch the application
+    public static void main(String[] args) {
+        Application.launch(args);
     }
 }
