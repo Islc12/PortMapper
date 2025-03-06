@@ -5,6 +5,12 @@ Date started: 2/26/2025
 Contact: (richrsmith@proton.me)
 
 ----------------------------------------------------------------------------------------------------------
+
+## License
+This project is licensed under the **GNU General Public License v3.0** - see the [LICENSE](LICENSE) file for details.
+
+----------------------------------------------------------------------------------------------------------
+
 ### PURPOSE
 During the 2025 Virginia Cyber Range CTF event we were presented with an "IRL" (in real life) challenge that could earn your team points for two separate parts.
 The first part involved using ssh to connect to a remote server. This was a fairly simple process as it just involved typical ssh usage. Though there was "tough" 
